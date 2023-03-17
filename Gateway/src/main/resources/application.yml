@@ -14,10 +14,6 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: first-service
-          uri: lb://first-service
-          predicates:
-            - Path=/first-service/**
         - id: second-service
           uri: lb://second-service
           predicates:
