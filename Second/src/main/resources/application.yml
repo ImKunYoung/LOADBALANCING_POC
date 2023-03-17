@@ -4,6 +4,28 @@ server:
 spring:
   application:
     name: second-service
+  # h2
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:./src/main/resources/data/testdb;AUTO_SERVER=TRUE;
+    username: admin
+    password: admin
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+
 
 eureka:
   client:
@@ -13,3 +35,32 @@ eureka:
 
 clientApp:
   name: 'second-service'
+
+
+
+
+
+# logging
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        SQL: DEBUG
+#        type: TRACE
+
+# swagger
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
+    display-request-duration: true
+  api-docs:
+    path: /api-docs
+  show-actuator: true
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  paths-to-match:
+    - /**
+  use-fqn: true
