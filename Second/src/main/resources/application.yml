@@ -9,3 +9,7 @@ eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
+
+
+clientApp:
+  name: 'second-service'
